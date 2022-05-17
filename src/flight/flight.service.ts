@@ -30,13 +30,13 @@ export class FlightService {
        await this.flightRepository.save(newFlight);
   }
 
-  findAll() {
-    return `This action returns all flight`;
+  async findAll(): Promise<Flight[]> {
+    return this.flightRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} flight`;
-  }
+  // findOne(maChuyenBay: string): Promise<Flight> {
+  //   return this.flightRepository.findOne(maChuyenBay);
+  // }
 
   update(id: number, updateFlightDto: UpdateFlightDto) {
     return `This action updates a #${id} flight`;

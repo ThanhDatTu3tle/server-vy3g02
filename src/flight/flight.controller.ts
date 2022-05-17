@@ -19,10 +19,10 @@ export class FlightController {
     return this.flightService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.flightService.findOne(+id);
-  }
+  // @Get(':maChuyenBay')
+  // findOne(@Param('maChuyenBay') maChuyenBay: string) {
+  //   return this.flightService.findOne(+maChuyenBay);
+  // }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateFlightDto: UpdateFlightDto) {

@@ -29,6 +29,7 @@
     "@nestjs/swagger": "^5.2.1",
     "@nestjs/typeorm": "^8.0.3",
     "axios": "^0.27.2",
+    "class-validator": "^0.13.2",
     "joi": "^17.6.0",
     "mssql": "^8.1.0",
     "passport": "^0.5.3",
@@ -37,6 +38,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
+    "stripe": "^9.1.0",
     "swagger-ui-express": "^4.4.0",
     "typeorm": "^0.2.45"
   },

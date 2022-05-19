@@ -2,41 +2,41 @@ import { Column, Entity, Index, OneToMany } from "typeorm";
 import { Phieudatcho } from "./Phieudatcho";
 import { Vechuyenbay } from "./Vechuyenbay";
 
-// @Index("PK__CHUYENBA__9B5036A3138D1A5C", ["maChuyenBay"], { unique: true })
+// @Index("PK__CHUYENBA__9B5036A3DF2D0DCC", ["maChuyenBay"], { unique: true })
 @Entity("CHUYENBAY", { schema: "dbo" })
 export class Chuyenbay {
-  @Column("char", { primary: true, name: "MaChuyenBay", length: 10 })
+  @Column("char", { primary: true, name: "MaChuyenBay", length: 6 })
   maChuyenBay: string;
 
-  @Column("char", { name: "TenChuyenBay", nullable: true, length: 10 })
-  tenChuyenBay: string | null;
+  @Column("nvarchar", { name: "TenChuyenBay", length: 250 })
+  tenChuyenBay: string;
 
-  @Column("char", { name: "SoGhe", nullable: true, length: 10 })
-  soGhe: string | null;
+  @Column("int", { name: "SoGhe" })
+  soGhe: number;
 
-  @Column("char", { name: "LoaiVe", nullable: true, length: 10 })
-  loaiVe: string | null;
+  @Column("nvarchar", { name: "LoaiVe", length: 250 })
+  loaiVe: string;
 
-  @Column("char", { name: "TenHang", nullable: true, length: 10 })
-  tenHang: string | null;
+  @Column("nvarchar", { name: "TenHang", length: 250 })
+  tenHang: string;
 
-  @Column("char", { name: "NoiDi", nullable: true, length: 10 })
-  noiDi: string | null;
+  @Column("nvarchar", { name: "NoiDi", length: 250 })
+  noiDi: string;
 
-  @Column("char", { name: "NoiDen", nullable: true, length: 10 })
-  noiDen: string | null;
+  @Column("nvarchar", { name: "NoiDen", length: 250 })
+  noiDen: string;
 
-  @Column("char", { name: "GioCatCanh", nullable: true, length: 10 })
-  gioCatCanh: string | null;
+  @Column("datetime", { name: "GioCatCanh" })
+  gioCatCanh: Date;
 
-  @Column("char", { name: "GioHaCanh", nullable: true, length: 10 })
-  gioHaCanh: string | null;
+  @Column("datetime", { name: "GioHaCanh" })
+  gioHaCanh: Date;
 
-  @Column("char", { name: "ThoiGianBay", nullable: true, length: 10 })
-  thoiGianBay: string | null;
+  @Column("nvarchar", { name: "ThoiGianBay", length: 25 })
+  thoiGianBay: string;
 
-  @Column("char", { name: "DonGia", nullable: true, length: 10 })
-  donGia: string | null;
+  @Column("decimal", { name: "DonGia", precision: 18, scale: 0 })
+  donGia: number;
 
   @OneToMany(() => Phieudatcho, (phieudatcho) => phieudatcho.maChuyenBay2)
   phieudatchos: Phieudatcho[];

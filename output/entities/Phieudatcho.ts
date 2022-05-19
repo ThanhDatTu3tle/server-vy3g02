@@ -9,27 +9,27 @@ import {
 import { Chuyenbay } from "./Chuyenbay";
 import { Vechuyenbay } from "./Vechuyenbay";
 
-// @Index("PK__PHIEUDAT__F94E1AB576B24A49", ["maPhieuDatCho", "maChuyenBay"], {
+// @Index("PK__PHIEUDAT__F94E1AB5900C49E7", ["maPhieuDatCho", "maChuyenBay"], {
 //   unique: true,
 // })
 @Entity("PHIEUDATCHO", { schema: "dbo" })
 export class Phieudatcho {
-  @Column("char", { primary: true, name: "MaPhieuDatCho", length: 10 })
+  @Column("char", { primary: true, name: "MaPhieuDatCho", length: 6 })
   maPhieuDatCho: string;
 
-  @Column("char", { name: "SoGhe", nullable: true, length: 10 })
-  soGhe: string | null;
+  @Column("int", { name: "SoGhe" })
+  soGhe: number;
 
-  @Column("char", { name: "LoaiVe", nullable: true, length: 10 })
-  loaiVe: string | null;
+  @Column("nvarchar", { name: "LoaiVe", length: 250 })
+  loaiVe: string;
 
-  @Column("char", { name: "NgayDat", nullable: true, length: 10 })
-  ngayDat: string | null;
+  @Column("datetime", { name: "NgayDat" })
+  ngayDat: Date;
 
-  @Column("char", { name: "ThanhTien", nullable: true, length: 10 })
-  thanhTien: string | null;
+  @Column("decimal", { name: "ThanhTien", precision: 18, scale: 0 })
+  thanhTien: number;
 
-  @Column("char", { primary: true, name: "MaChuyenBay", length: 10 })
+  @Column("char", { primary: true, name: "MaChuyenBay", length: 6 })
   maChuyenBay: string;
 
   @ManyToOne(() => Chuyenbay, (chuyenbay) => chuyenbay.phieudatchos)

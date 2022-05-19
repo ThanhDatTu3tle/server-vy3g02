@@ -34,9 +34,9 @@ export class FlightService {
     return this.flightRepository.find();
   }
 
-  // findOne(maChuyenBay: string): Promise<Flight> {
-  //   return this.flightRepository.findOne(maChuyenBay);
-  // }
+  findOne(maChuyenBay: string): Promise<Flight> {
+    return this.flightRepository.findOne(maChuyenBay);
+  }
 
   update(id: number, updateFlightDto: UpdateFlightDto) {
     return `This action updates a #${id} flight`;

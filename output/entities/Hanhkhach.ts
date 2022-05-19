@@ -2,17 +2,17 @@ import { Column, Entity, Index, OneToMany } from "typeorm";
 import { Hoadon } from "./Hoadon";
 import { Vechuyenbay } from "./Vechuyenbay";
 
-// @Index("PK__HANHKHAC__A955A0ABB27E9D48", ["cccd"], { unique: true })
+// @Index("PK__HANHKHAC__A955A0AB5AA3FD95", ["cccd"], { unique: true })
 @Entity("HANHKHACH", { schema: "dbo" })
 export class Hanhkhach {
-  @Column("char", { primary: true, name: "CCCD", length: 10 })
+  @Column("char", { primary: true, name: "CCCD", length: 12 })
   cccd: string;
 
-  @Column("char", { name: "TenHanhKhach", nullable: true, length: 10 })
-  tenHanhKhach: string | null;
+  @Column("nvarchar", { name: "TenHanhKhach", length: 250 })
+  tenHanhKhach: string;
 
-  @Column("char", { name: "SoDienThoai", nullable: true, length: 10 })
-  soDienThoai: string | null;
+  @Column("char", { name: "SoDienThoai", length: 10 })
+  soDienThoai: string;
 
   @OneToMany(() => Hoadon, (hoadon) => hoadon.cccd2)
   hoadons: Hoadon[];

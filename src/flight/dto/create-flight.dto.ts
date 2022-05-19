@@ -4,34 +4,24 @@ export class CreateFlightDto {
 
   @ApiProperty()
   maChuyenBay: string;
-
   @ApiProperty()
-  tenChuyenBay: string | null;
-
+  tenChuyenBay: string;
   @ApiProperty()
-  soGhe: string | null;
-
+  soGhe: number;
   @ApiProperty()
-  loaiVe: string | null;
-
+  loaiVe: string;
   @ApiProperty()
-  tenHang: string | null;
-
+  tenHang: string;
   @ApiProperty()
-  noiDi: string | null;
-
+  noiDi: string;
   @ApiProperty()
-  noiDen: string | null;
-
+  noiDen: string;
   @ApiProperty()
-  gioCatCanh: string | null;
-
+  gioCatCanh: Date;
   @ApiProperty()
-  gioHaCanh: string | null;
-
+  gioHaCanh: Date;
   @ApiProperty()
-  thoiGianBay: string | null;
-
+  thoiGianBay: string;
   @ApiProperty()
-  donGia: string | null;
+  donGia: number;
 }

@@ -3,9 +3,9 @@
     "name": "default",
     "type": "mssql",
     "host": "localhost",
-    "port": 1433,
+    "port": 1444,
     "username": "sa",
-    "password": "dat27032001",
+    "password": "!dat27032001",
     "database": "",
     "synchronize": false,
     "entities": ["entities/*.js"]

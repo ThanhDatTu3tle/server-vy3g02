@@ -1,10 +1,10 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne } from "typeorm";
 import { Chuyenbay } from "./Chuyenbay";
-import { Hanhkhach } from "./Hanhkhach";
 import { Phieudatcho } from "./Phieudatcho";
+import { Hanhkhach } from "./Hanhkhach";
 
 // @Index(
-//   "PK__VECHUYEN__91600A6026C60543",
+//   "PK__VECHUYEN__91600A60E9D87684",
 //   ["maVeChuyenBay", "maChuyenBay", "maPhieuDatCho", "cccd"],
 //   { unique: true }
 // )
@@ -13,25 +13,21 @@ export class Vechuyenbay {
   @Column("char", { primary: true, name: "MaVeChuyenBay", length: 10 })
   maVeChuyenBay: string;
 
-  @Column("char", { name: "GiaVe", nullable: true, length: 10 })
-  giaVe: string | null;
+  @Column("decimal", { name: "GiaVe", precision: 18, scale: 0 })
+  giaVe: number;
 
-  @Column("char", { primary: true, name: "MaChuyenBay", length: 10 })
+  @Column("char", { primary: true, name: "MaChuyenBay", length: 6 })
   maChuyenBay: string;
 
-  @Column("char", { primary: true, name: "MaPhieuDatCho", length: 10 })
+  @Column("char", { primary: true, name: "MaPhieuDatCho", length: 6 })
   maPhieuDatCho: string;
 
-  @Column("char", { primary: true, name: "CCCD", length: 10 })
+  @Column("char", { primary: true, name: "CCCD", length: 12 })
   cccd: string;
 
   @ManyToOne(() => Chuyenbay, (chuyenbay) => chuyenbay.vechuyenbays)
   @JoinColumn([{ name: "MaChuyenBay", referencedColumnName: "maChuyenBay" }])
   maChuyenBay2: Chuyenbay;
-
-  @ManyToOne(() => Hanhkhach, (hanhkhach) => hanhkhach.vechuyenbays)
-  @JoinColumn([{ name: "CCCD", referencedColumnName: "cccd" }])
-  cccd2: Hanhkhach;
 
   @ManyToOne(() => Phieudatcho, (phieudatcho) => phieudatcho.vechuyenbays)
   @JoinColumn([
@@ -39,4 +35,8 @@ export class Vechuyenbay {
     { name: "MaChuyenBay", referencedColumnName: "maChuyenBay" },
   ])
   phieudatcho: Phieudatcho;
+
+  @ManyToOne(() => Hanhkhach, (hanhkhach) => hanhkhach.vechuyenbays)
+  @JoinColumn([{ name: "CCCD", referencedColumnName: "cccd" }])
+  cccd2: Hanhkhach;
 }

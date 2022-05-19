@@ -1,19 +1,19 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne } from "typeorm";
 import { Hanhkhach } from "./Hanhkhach";
 
-// @Index("PK__HOADON__29CB8B311FF437AB", ["maHoaDon", "cccd"], { unique: true })
+// @Index("PK__HOADON__29CB8B31299463EF", ["maHoaDon", "cccd"], { unique: true })
 @Entity("HOADON", { schema: "dbo" })
 export class Hoadon {
-  @Column("char", { primary: true, name: "MaHoaDon", length: 10 })
+  @Column("char", { primary: true, name: "MaHoaDon", length: 6 })
   maHoaDon: string;
 
-  @Column("char", { name: "NgayLapHoaDon", nullable: true, length: 10 })
-  ngayLapHoaDon: string | null;
+  @Column("datetime", { name: "NgayLapHoaDon" })
+  ngayLapHoaDon: Date;
 
-  @Column("char", { name: "ThanhTien", nullable: true, length: 10 })
-  thanhTien: string | null;
+  @Column("decimal", { name: "ThanhTien", precision: 18, scale: 0 })
+  thanhTien: number;
 
-  @Column("char", { primary: true, name: "CCCD", length: 10 })
+  @Column("char", { primary: true, name: "CCCD", length: 12 })
   cccd: string;
 
   @ManyToOne(() => Hanhkhach, (hanhkhach) => hanhkhach.hoadons)

@@ -17,8 +17,6 @@ export class FlightService {
        //create new flight
        const newFlight = this.flightRepository.create();
        newFlight.maChuyenBay = createFlightDto.maChuyenBay;
-       newFlight.tenChuyenBay = createFlightDto.tenChuyenBay;
-       newFlight.soGhe = createFlightDto.soGhe;
        newFlight.loaiVe = createFlightDto.loaiVe;
        newFlight.tenHang = createFlightDto.tenHang;
        newFlight.noiDi = createFlightDto.noiDi;
@@ -27,6 +25,7 @@ export class FlightService {
        newFlight.gioHaCanh = createFlightDto.gioHaCanh;
        newFlight.thoiGianBay = createFlightDto.thoiGianBay;
        newFlight.donGia = createFlightDto.donGia;
+       newFlight.imageHang = createFlightDto.imageHang;
        await this.flightRepository.save(newFlight);
   }
 
@@ -34,7 +33,19 @@ export class FlightService {
     return this.flightRepository.find();
   }
 
-  findOne(maChuyenBay: string): Promise<Flight> {
+  async findOne(maChuyenBay: string): Promise<Flight> {
+
+    try {
+      const flight = await this.flightRepository.findOne({
+        where: {
+          maCanHo: maChuyenBay,
+        },
+      });
+      return flight;
+    } catch (err) {
+      throw err;
+    }
+
     return this.flightRepository.findOne(maChuyenBay);
   }
 

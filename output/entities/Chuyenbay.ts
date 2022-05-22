@@ -8,12 +8,6 @@ export class Chuyenbay {
   @Column("char", { primary: true, name: "MaChuyenBay", length: 6 })
   maChuyenBay: string;
 
-  @Column("nvarchar", { name: "TenChuyenBay", length: 250 })
-  tenChuyenBay: string;
-
-  @Column("int", { name: "SoGhe" })
-  soGhe: number;
-
   @Column("nvarchar", { name: "LoaiVe", length: 250 })
   loaiVe: string;
 
@@ -37,6 +31,9 @@ export class Chuyenbay {
 
   @Column("decimal", { name: "DonGia", precision: 18, scale: 0 })
   donGia: number;
+
+  @Column("nvarchar", { name: "ImageHang", length: 250 })
+  imageHang: string;
 
   @OneToMany(() => Phieudatcho, (phieudatcho) => phieudatcho.maChuyenBay2)
   phieudatchos: Phieudatcho[];

@@ -5,10 +5,6 @@ export class CreateFlightDto {
   @ApiProperty()
   maChuyenBay: string;
   @ApiProperty()
-  tenChuyenBay: string;
-  @ApiProperty()
-  soGhe: number;
-  @ApiProperty()
   loaiVe: string;
   @ApiProperty()
   tenHang: string;
@@ -24,4 +20,6 @@ export class CreateFlightDto {
   thoiGianBay: string;
   @ApiProperty()
   donGia: number;
+  @ApiProperty()
+  imageHang: string;
 }

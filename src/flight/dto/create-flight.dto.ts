@@ -13,9 +13,13 @@ export class CreateFlightDto {
   @ApiProperty()
   noiDen: string;
   @ApiProperty()
-  gioCatCanh: Date;
+  gioCatCanh: string;
   @ApiProperty()
-  gioHaCanh: Date;
+  gioHaCanh: string;
+  @ApiProperty()
+  ngayCatCanh: string;
+  @ApiProperty()
+  ngayHaCanh: string;
   @ApiProperty()
   thoiGianBay: string;
   @ApiProperty()

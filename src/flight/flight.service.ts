@@ -23,6 +23,8 @@ export class FlightService {
        newFlight.noiDen = createFlightDto.noiDen;
        newFlight.gioCatCanh = createFlightDto.gioCatCanh;
        newFlight.gioHaCanh = createFlightDto.gioHaCanh;
+       newFlight.ngayCatCanh = createFlightDto.ngayCatCanh;
+       newFlight.ngayHaCanh = createFlightDto.ngayHaCanh;
        newFlight.thoiGianBay = createFlightDto.thoiGianBay;
        newFlight.donGia = createFlightDto.donGia;
        newFlight.imageHang = createFlightDto.imageHang;

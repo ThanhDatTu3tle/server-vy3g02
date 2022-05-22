@@ -20,16 +20,22 @@ export class Chuyenbay {
   @Column("nvarchar", { name: "NoiDen", length: 250 })
   noiDen: string;
 
-  @Column("datetime", { name: "GioCatCanh" })
-  gioCatCanh: Date;
+  @Column("nvarchar", { name: "GioCatCanh", length: 250 })
+  gioCatCanh: string;
 
-  @Column("datetime", { name: "GioHaCanh" })
-  gioHaCanh: Date;
+  @Column("nvarchar", { name: "GioHaCanh", length: 250 })
+  gioHaCanh: string;
+
+  @Column("nvarchar", { name: "NgayCatCanh", length: 250 })
+  ngayCatCanh: string;
+
+  @Column("nvarchar", { name: "NgayHaCanh", length: 250 })
+  ngayHaCanh: string;
 
   @Column("nvarchar", { name: "ThoiGianBay", length: 25 })
   thoiGianBay: string;
 
-  @Column("decimal", { name: "DonGia", precision: 18, scale: 0 })
+  @Column("decimal", { name: "DonGia", precision: 18, scale: 3 })
   donGia: number;
 
   @Column("nvarchar", { name: "ImageHang", length: 250 })

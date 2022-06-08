@@ -17,7 +17,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
   .setTitle('SERVER VY3-G02 API')
   .setDescription('The description of the API')
-  .setVersion('1.0.0')
+  .setVersion('1.1.1')
   .build();
 
   const document = SwaggerModule.createDocument(app, config);

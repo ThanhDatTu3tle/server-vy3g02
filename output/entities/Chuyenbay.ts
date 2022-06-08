@@ -11,14 +11,23 @@ export class Chuyenbay {
   @Column("nvarchar", { name: "LoaiVe", length: 250 })
   loaiVe: string;
 
+  @Column("nvarchar", { name: "MaLoaiVe", length: 250 })
+  maLoaiVe: string;
+
   @Column("nvarchar", { name: "TenHang", length: 250 })
   tenHang: string;
 
   @Column("nvarchar", { name: "NoiDi", length: 250 })
   noiDi: string;
 
+  @Column("nvarchar", { name: "MaNoiDi", length: 250 })
+  maNoiDi: string;
+
   @Column("nvarchar", { name: "NoiDen", length: 250 })
   noiDen: string;
+
+  @Column("nvarchar", { name: "MaNoiDen", length: 250 })
+  maNoiDen: string;
 
   @Column("nvarchar", { name: "GioCatCanh", length: 250 })
   gioCatCanh: string;
@@ -35,7 +44,7 @@ export class Chuyenbay {
   @Column("nvarchar", { name: "ThoiGianBay", length: 25 })
   thoiGianBay: string;
 
-  @Column("decimal", { name: "DonGia", precision: 18, scale: 3 })
+  @Column("int", { name: "DonGia" })
   donGia: number;
 
   @Column("nvarchar", { name: "ImageHang", length: 250 })

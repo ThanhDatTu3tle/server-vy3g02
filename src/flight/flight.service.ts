@@ -3,7 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateFlightDto } from './dto/create-flight.dto';
 import { UpdateFlightDto } from './dto/update-flight.dto';
 import { Chuyenbay as Flight } from '../../output/entities/Chuyenbay';
-import { Repository } from 'typeorm';
+import { Repository, getManager } from 'typeorm';
+// import * as moment from 'moment';
 
 @Injectable()
 export class FlightService {
@@ -18,9 +19,12 @@ export class FlightService {
        const newFlight = this.flightRepository.create();
        newFlight.maChuyenBay = createFlightDto.maChuyenBay;
        newFlight.loaiVe = createFlightDto.loaiVe;
+       newFlight.maLoaiVe = createFlightDto.maLoaiVe;
        newFlight.tenHang = createFlightDto.tenHang;
        newFlight.noiDi = createFlightDto.noiDi;
+       newFlight.maNoiDi = createFlightDto.maNoiDi;
        newFlight.noiDen = createFlightDto.noiDen;
+       newFlight.maNoiDen = createFlightDto.maNoiDen;
        newFlight.gioCatCanh = createFlightDto.gioCatCanh;
        newFlight.gioHaCanh = createFlightDto.gioHaCanh;
        newFlight.ngayCatCanh = createFlightDto.ngayCatCanh;
@@ -31,31 +35,45 @@ export class FlightService {
        await this.flightRepository.save(newFlight);
   }
 
-  async findAll(): Promise<Flight[]> {
+  async getAll() {
     return this.flightRepository.find();
   }
 
-  async findOne(maChuyenBay: string): Promise<Flight> {
+  async search(ngayCatCanh: string, maNoiDi: string, maNoiDen: string, maLoaiVe: string): Promise<Flight[]> {
 
-    try {
-      const flight = await this.flightRepository.findOne({
+    const manager = getManager();
+    const dateQuery = await manager.query(
+      `SELECT * from CHUYENBAY where (NgayCatCanh = '${ngayCatCanh}' AND MaNoiDi = '${maNoiDi}' AND MaNoiDen = '${maNoiDen}' AND MaLoaiVe = '${maLoaiVe}')`,
+    );
+
+    dateQuery.map((item: any) => {
+      const ngayCatCanh = item.ngayCatCanh;
+      const maNoiDi = item.maNoiDi;
+      const maNoiDen = item.maNoiDen;
+      const maLoaiVe = item.maLoaiVe;
+
+      return ngayCatCanh && maNoiDi && maNoiDen && maLoaiVe;
+    });
+
+    if (ngayCatCanh && maNoiDi && maNoiDen) {
+      const findByName = await this.flightRepository.find({
         where: {
-          maCanHo: maChuyenBay,
+          ngayCatCanh: ngayCatCanh,
+          maNoiDi: maNoiDi,
+          maNoiDen: maNoiDen,
+          maLoaiVe: maLoaiVe,
         },
       });
-      return flight;
-    } catch (err) {
-      throw err;
+
+      return findByName;
     }
-
-    return this.flightRepository.findOne(maChuyenBay);
   }
 
-  update(id: number, updateFlightDto: UpdateFlightDto) {
-    return `This action updates a #${id} flight`;
-  }
+  // update(id: number, updateFlightDto: UpdateFlightDto) {
+  //   return `This action updates a #${id} flight`;
+  // }
 
-  remove(id: number) {
-    return `This action removes a #${id} flight`;
-  }
+  // remove(id: number) {
+  //   return `This action removes a #${id} flight`;
+  // }
 }

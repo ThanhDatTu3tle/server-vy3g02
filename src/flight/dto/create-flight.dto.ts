@@ -7,11 +7,17 @@ export class CreateFlightDto {
   @ApiProperty()
   loaiVe: string;
   @ApiProperty()
+  maLoaiVe: string;
+  @ApiProperty()
   tenHang: string;
   @ApiProperty()
   noiDi: string;
   @ApiProperty()
+  maNoiDi: string;
+  @ApiProperty()
   noiDen: string;
+  @ApiProperty()
+  maNoiDen: string;
   @ApiProperty()
   gioCatCanh: string;
   @ApiProperty()

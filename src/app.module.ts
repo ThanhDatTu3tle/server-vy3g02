@@ -7,6 +7,7 @@ import config from 'ormconfig';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { JwtStrategy } from './auth/jwt.strategy';
+import { BookedDateModule } from './booked-date/booked-date.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { JwtStrategy } from './auth/jwt.strategy';
         FRONTEND_URL: Joi.string(),
         // ...
       })
-    })
+    }),
+    BookedDateModule
   ],
   controllers: [AppController],
   providers: [AppService],
